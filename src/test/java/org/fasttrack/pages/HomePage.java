@@ -10,6 +10,9 @@ public class HomePage extends BasePage{
     @FindBy(css = ".site-title a")
     private WebElementFacade siteTitle;
 
+    @FindBy(css = "#menu-item-64 a")
+    private WebElementFacade myAccountButton;
+
     @FindBy(css = ".search-box > i")
     private WebElementFacade searchBox;
 
@@ -19,11 +22,21 @@ public class HomePage extends BasePage{
     @FindBy(css = ".search-box form i")
     private WebElementFacade searchBoxButton;
 
+    @FindBy(css = ".main #menu li a")
+    private WebElementFacade shopButton;
+
+    @FindBy(css = "select.orderby [value='price']")
+    private WebElementFacade sortProductsShopButton;
 
 
 
-    public void checkTextSiteTitle(){
-siteTitle.shouldContainElements("FASTTRACKIT");
+
+    public void clickOnMyAccountButton(){
+        clickOn(myAccountButton);
+    }
+
+    public String checkTextSiteTitle(){
+ return siteTitle.getText();
     }
 
     public void clickSearchBox(){
@@ -38,6 +51,12 @@ siteTitle.shouldContainElements("FASTTRACKIT");
         clickOn(searchBoxButton);
     }
 
+public void clickShopButton(){
+        clickOn(shopButton);
+}
 
+    public void clickSortProductsShopButton(){
+        clickOn(sortProductsShopButton);
+    }
 
 }

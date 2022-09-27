@@ -28,11 +28,21 @@ import org.openqa.selenium.WebDriver;
         protected HomeSteps homeSteps;
         @Steps
         protected ProductSteps productSteps;
+        @Steps
+        protected RegisterSteps registerSteps;
 
         @Before
         public void init() {
             driver.manage().window().maximize();
             driver.get("http://qa2.fasttrackit.org:8008");
+        }
+
+        public static void wait(int seconds){
+            try{
+                Thread.sleep(seconds*1000L);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
         }
 
     }

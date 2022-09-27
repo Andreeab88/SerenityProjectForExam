@@ -5,6 +5,7 @@ import org.fasttrack.pages.HomePage;
 import org.junit.Assert;
 
 import static org.fasttrack.utils.Constants.productName1;
+import static org.fasttrack.utils.Constants.productName2;
 
 public class SearchSteps extends BaseSteps{
 
@@ -16,4 +17,9 @@ public class SearchSteps extends BaseSteps{
         homePage.clickSearchButton();
     }
 
+    @Step
+    public void findProductsInGridAndOpenStep(){
+        searchResultsPage.searchProductsInList(productName2);
+
+    }
 }
