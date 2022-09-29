@@ -27,12 +27,10 @@ public class RegisterSteps extends BaseSteps {
     public void navigateToAccountPageForRegister() {
         accountPage.setEmailRegisterField(USER_EMAIL);
         accountPage.setPassRegisterField(USER_PASS);
-    }
-
-    @Step
-    public void selectRegisterButton() {
         accountPage.clickRegisterButton();
     }
+
+
 
     @Step
     public void getErrorRegisterMessageStep() {

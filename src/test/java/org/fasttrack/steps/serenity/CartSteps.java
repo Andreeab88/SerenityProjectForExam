@@ -11,28 +11,24 @@ public class CartSteps extends BaseSteps{
 
     @Step
     public void addProductInCart(){
-productsPage.clickCartButton();
-
-
+productPage.clickCartButton();
     }
 
-
-@Step
-public void checkSuccessMessage() {
+    @Step
+public void checkSuccessMessage(String productName1) {
     String expected ="“"+ productName1 +"” has been added to your cart.";
-    String actual = productsPage.checkSuccesMessageProductIsInCart();
+    String actual = productPage.checkSuccesMessageProductIsInCart();
     System.out.println(expected);
     System.out.println(actual);
     Assert.assertEquals(expected,actual);
 }
 
     @Step
-    public void setQTY(){
-        productsPage.setInputQty(Qty1);
+    public void setQtyAndViewCart(String Qty1){
+        productPage.setInputQty(Qty1);
+        productPage.clickViewCartButton();
     }
 
-public void viewCart(){
-    productsPage.clickViewCartButton();
-}
+
 
 }

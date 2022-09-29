@@ -1,4 +1,14 @@
 package org.fasttrack.features.search;
 
-public class CheckoutTest extends BaseTest{
+import org.junit.Test;
+
+public class CheckoutTest extends BaseTest {
+
+    @Test
+    public void searchProductByPopularityTest() {
+        homeSteps.checkNameSite("FASTTRACKIT");
+        searchSteps.navigateToProductName();
+
+    }
+
 }

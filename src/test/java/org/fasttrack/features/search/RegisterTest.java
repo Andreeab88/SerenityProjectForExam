@@ -9,7 +9,6 @@ public class RegisterTest extends BaseTest{
         registerSteps.getTitleSite();
 registerSteps.navigateToHomePage();
 registerSteps.navigateToAccountPageForRegister();
-registerSteps.selectRegisterButton();
 registerSteps.getErrorRegisterMessageStep();
     }
 }

@@ -38,6 +38,24 @@ public class AccountPage extends BasePage{
     @FindBy(css = "a:-webkit-any-link")
     private WebElementFacade logOutButton;
 
+    @FindBy(css = ".woocommerce-error li")
+    private WebElementFacade errorMessageForLostPass;
+
+    @FindBy(css = ".lost_password a")
+    private WebElementFacade lostPasswordField;
+
+    @FindBy(css = "#user_login")
+    private WebElementFacade emailForLostPassField;
+
+    @FindBy(css = "button[value='Reset password']")
+    private WebElementFacade resetPassButton;
+
+    @FindBy(css = ".woocommerce > div[class*=\"woocommerce-\"]")
+    private WebElementFacade succesMessageForRecoveryTheLostPass;
+
+
+
+
 
 
     public void setEmailRegisterField(String email) {
@@ -81,4 +99,23 @@ public class AccountPage extends BasePage{
         clickOn(logOutButton);
     }
 
+    public String getErrorMessageForLostPass(){
+        return   errorMessageForLostPass.getText();
+    }
+
+    public void clickOnLostPasswordButton(){
+        clickOn(lostPasswordField);
+    }
+
+    public void setEmailForLostPassField(String email) {
+        typeInto(emailField, email);
+    }
+
+    public String getSuccesMessageForRecoveryTheLostPass(){
+        return   succesMessageForRecoveryTheLostPass.getText();
+    }
+
+public void clickResetPassButton(){
+        clickOn(resetPassButton);
+}
 }

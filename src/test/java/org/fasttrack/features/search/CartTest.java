@@ -6,19 +6,19 @@ import org.junit.Test;
 public class CartTest extends BaseTest{
 
     @Test
-    public void addProductsInCart() {
-        searchSteps.searchProduct1();
-        productSteps.selectProductImage();
+    public void addProductsInCartTest() {
+        searchSteps.navigateToProductName();
+        productSteps.selectProductImage("Album");
         cartSteps.addProductInCart();
-        cartSteps.checkSuccessMessage();
-        cartSteps.setQTY();
-        wait(3);
-        cartSteps.viewCart();
+        cartSteps.checkSuccessMessage("Album");
+        cartSteps.setQtyAndViewCart("2");
+
     }
 
-    @Step
-    public void addSortedProductsCartAndAfterRemoveItFromCart(){
-       // homeSteps.checkNameSite();
-        productSteps.SearchSortedProductsByAscendingPrice();
+    @Test
+    public void searchProductByPopularityTest(){
+       homeSteps.checkNameSite("FASTTRACKIT");
+       productSteps.searchProductByPopularity();
+       productSteps.viewProduct("Hoogie with Zipper");
     }
     }

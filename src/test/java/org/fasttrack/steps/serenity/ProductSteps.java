@@ -1,23 +1,26 @@
 package org.fasttrack.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
-import org.fasttrack.pages.ProductsPage;
-import org.junit.Assert;
+import org.yecht.Data;
 
 public class ProductSteps extends BaseSteps{
 
     @Step
-    public void selectProductImage(){
-        productsPage.clickProductImage();
-
+    public void selectProductImage(String productImg){
+        productPage.clickProductImage("Album");
     }
+
 
     @Step
-    public void SearchSortedProductsByAscendingPrice(){
+        public void searchProductByPopularity(){
         homePage.clickShopButton();
-        homePage.clickSortProductsShopButton();
+        productPage.selectDropDownValues();
     }
+    @Step
+    public void viewProduct(String productName){
+        productPage.findProductInGridAndOpen("Hoogie with Zipper");
 
+    }
 
 
 }

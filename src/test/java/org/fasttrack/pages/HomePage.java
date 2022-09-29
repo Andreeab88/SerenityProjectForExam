@@ -22,11 +22,9 @@ public class HomePage extends BasePage{
     @FindBy(css = ".search-box form i")
     private WebElementFacade searchBoxButton;
 
-    @FindBy(css = ".main #menu li a")
+    @FindBy(css = ".menu-item a")
     private WebElementFacade shopButton;
 
-    @FindBy(css = "select.orderby [value='price']")
-    private WebElementFacade sortProductsShopButton;
 
 
 
@@ -55,8 +53,6 @@ public void clickShopButton(){
         clickOn(shopButton);
 }
 
-    public void clickSortProductsShopButton(){
-        clickOn(sortProductsShopButton);
-    }
+
 
 }
