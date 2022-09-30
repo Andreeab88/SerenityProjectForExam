@@ -11,10 +11,10 @@ public class SearchSteps extends BaseSteps{
 
 
     @Step
-    public void navigateToProductName(){
-        homePage.clickSearchBox();
+    public void searchProductNameStep(){
+        homePage.clickOnSearchBox();
         homePage.setSearchField(productName1);
-        homePage.clickSearchButton();
+        homePage.clickOnSearchButton();
     }
 
     @Step

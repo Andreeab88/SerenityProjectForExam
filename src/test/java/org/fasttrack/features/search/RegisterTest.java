@@ -6,7 +6,7 @@ public class RegisterTest extends BaseTest{
 
     @Test
     public void errorAlreadyRegisterTest(){
-        registerSteps.getTitleSite();
+        registerSteps.verifyTitleSite();
 registerSteps.navigateToHomePage();
 registerSteps.navigateToAccountPageForRegister();
 registerSteps.getErrorRegisterMessageStep();

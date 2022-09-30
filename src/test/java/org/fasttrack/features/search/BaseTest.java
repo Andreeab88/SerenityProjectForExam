@@ -30,6 +30,9 @@ import org.openqa.selenium.WebDriver;
         protected ProductSteps productSteps;
         @Steps
         protected RegisterSteps registerSteps;
+        @Steps
+        protected AccountSteps accountSteps;
+
 
         @Before
         public void init() {
@@ -43,6 +46,15 @@ import org.openqa.selenium.WebDriver;
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
+        }
+
+        public void waitABit(long delayInMilliseconds) {
+            try {
+                Thread.sleep(delayInMilliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

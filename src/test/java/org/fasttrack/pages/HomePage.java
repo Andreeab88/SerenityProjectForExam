@@ -11,7 +11,7 @@ public class HomePage extends BasePage{
     private WebElementFacade siteTitle;
 
     @FindBy(css = "#menu-item-64 a")
-    private WebElementFacade myAccountButton;
+    private WebElementFacade openMyAccount;
 
     @FindBy(css = ".search-box > i")
     private WebElementFacade searchBox;
@@ -22,22 +22,27 @@ public class HomePage extends BasePage{
     @FindBy(css = ".search-box form i")
     private WebElementFacade searchBoxButton;
 
-    @FindBy(css = ".menu-item a")
-    private WebElementFacade shopButton;
-
+    @FindBy(css = "#menu-item-66 a")
+    private WebElementFacade openShop;
+    @FindBy(css = "#menu-item-63 a")
+    private WebElementFacade openHome;
+    @FindBy(css = "#menu-item-65 a")
+    private WebElementFacade openCheckout;
+    @FindBy(css = ".dashicons-cart")
+    private WebElementFacade openCart;
 
 
 
 
     public void clickOnMyAccountButton(){
-        clickOn(myAccountButton);
+        clickOn(openMyAccount);
     }
 
     public String checkTextSiteTitle(){
  return siteTitle.getText();
     }
 
-    public void clickSearchBox(){
+    public void clickOnSearchBox(){
         clickOn(searchBox);
     }
 
@@ -45,13 +50,24 @@ public class HomePage extends BasePage{
         typeInto(searchBoxInputText,productName1);
     }
 
-    public void clickSearchButton(){
+    public void clickOnSearchButton(){
         clickOn(searchBoxButton);
     }
 
-public void clickShopButton(){
-        clickOn(shopButton);
+public void clickOnShopButton(){
+        clickOn(openShop);
 }
+    public void clickOnHomeButton(){
+        clickOn(openHome);
+    }
+    public void clickOnCheckoutButton(){
+        clickOn(openCheckout);
+    }
+    public void clickOnCartButton(){
+        clickOn(openCart);
+    }
+
+
 
 
 

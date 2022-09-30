@@ -1,0 +1,21 @@
+ANDREEA BOBOC
+
+Proiect: AutomationTesting – FastTrackIT-QA2 – Proiect pentru testarea automata a unui site Web: http://qa2.fasttrackit.org:8008/
+In cadrul acestui proiect, am realizat o serie de teste automare, care au ca scop testarea anumitor functionalitati de baza ale aplicatiei, cum ar fi:
+•	Register – crearea unui nou cont de utilizator sau de administrator, atat cu date valide cat si cu date invalide.
+•	Login – autentificarea pe contul de utilizator sau de administrator atat cu date valide cat si cu date invalide.
+•	Admin – crearea unor tichete de discount.
+•	Products – selectarea unui produs dintr-o lista de produse.
+•	Cart – verificarea totalului calculat in urma schimbarii cantitatii unui produs in cosul de cumparaturi.
+•	Checkout – finalizarea comenzii atat cu date valide cat si cu date invalide.
+•	Search – cautarea unui produs, dupa un cuvant cheie.
+Descriere:
+AutomationTesting – FastTrackIT-QA2 este un proiect de testare automata dezvoltat in limbajul Serenity.
+
+Aplicatia FastTrackIT-QA2 pe care am realizat testele, este un magazin demonstrativ, de test, iar toate comenzile realizate in urma testelor nu vor fi onorate.
+
+Tehnologii folosite :
+•	Java
+•	Selenium
+•	JUnit
+•	Serenity

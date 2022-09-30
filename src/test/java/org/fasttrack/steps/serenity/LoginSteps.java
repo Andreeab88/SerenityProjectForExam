@@ -1,6 +1,7 @@
 package org.fasttrack.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
+import org.fasttrack.pages.AccountPage;
 import org.junit.Assert;
 
 import static org.fasttrack.utils.Constants.USER_EMAIL;
@@ -9,7 +10,13 @@ import static org.fasttrack.utils.Constants.USER_PASS;
 public class LoginSteps extends BaseSteps{
 
     @Step
-    public void navigateToLoginStep(String USER_EMAIL, String USER_PASS){
+    public void navigateToHomepage(){
+        homePage.open();
+    }
+
+
+    @Step
+    public void loginWithValidCredentialsStep(String USER_EMAIL, String USER_PASS){
         accountPage.setEmailField(USER_EMAIL);
         accountPage.setPassField(USER_PASS);
         accountPage.clickRememberMeButton();
@@ -22,12 +29,70 @@ public class LoginSteps extends BaseSteps{
         String actual = accountPage.getSuccesMessageLogin();
         Assert.assertEquals(expected,actual);
     }
+
+
     @Step
     public void logOutStep(){
         accountPage.clickLogOutButton();
+        waitABit(500);
+    }
+
+    @Step
+    public void loginUsingBadEmailFormatSteps(){
+        homePage.open();
+        homePage.clickOnMyAccountButton();
+        accountPage.setEmailField("andreea1988iusti2015&gmail.com");
+        accountPage.setPassField(USER_PASS);}
+    @Step
+    public void checkErrorTextUsingWrongEmail(){
+        String expected = "ERROR: Invalid username. Lost your password?";
+        String actual = accountPage.checkErrorTextWrongUsername();
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Step
+    public void verifySuccesLoginWithLowerCaseEmailInserted(){
+        homePage.open();
+        homePage.clickOnMyAccountButton();
+        accountPage.setEmailField("ANDREEA1988IUSTI2015@GMAIL.COM");
+        accountPage.setPassField(USER_PASS);
+
+    }
+    @Step
+    public void loginUsingWrongEmailInserted(){
+        homePage.open();
+        homePage.clickOnMyAccountButton();
+        accountPage.setEmailField("iusti2015andreea1988@gmail.com");
+        accountPage.setPassField(USER_PASS);
+
+    }
+
+    @Step
+    public void loginUsingWrongPassword(String email, String password){
+        homePage.open();
+        homePage.clickOnMyAccountButton();
+        accountPage.setEmailField( USER_EMAIL);
+        accountPage.setPassField("123456");}
+    @Step
+    public void verifyTextErrorUsingWrongPass(){
+        String expected = "ERROR: The password you entered for the email address andreea1988iusti2015@gmail.com is incorrect. Lost your password?";
+        String actual = accountPage.checkErrorTextPass();
+        Assert.assertEquals(expected,actual);
     }
 
 
+    @Step
+    public void loginUsingNoCredentials(){
+        homePage.open();
+        homePage.clickOnMyAccountButton();
+        accountPage.setEmailField("");
+        accountPage.setPassField("");}
+    @Step
+    public void verifyTextErrorLoginWithoutCredentials(){
+        String expected = "ERROR: The password you entered for the email address andreea1988iusti2015@gmail.com is incorrect. Lost your password?";
+        String actual = accountPage.checkErrorTextLoginWithoutCredentials();
+        Assert.assertEquals(expected,actual);
+    }
 
 
     @Step
@@ -54,5 +119,6 @@ public class LoginSteps extends BaseSteps{
         String actual = accountPage.getSuccesMessageForRecoveryTheLostPass();
         Assert.assertEquals(expected,actual);
     }
+
 
 }

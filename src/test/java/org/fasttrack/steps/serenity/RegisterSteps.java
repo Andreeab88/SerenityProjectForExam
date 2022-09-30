@@ -11,7 +11,7 @@ import static org.fasttrack.utils.Constants.USER_PASS;
 public class RegisterSteps extends BaseSteps {
 
     @Step
-    public void getTitleSite() {
+    public void verifyTitleSite() {
         String actual = homePage.checkTextSiteTitle();
         String expected = "FASTTRACKIT";
         Assert.assertEquals(actual, expected);

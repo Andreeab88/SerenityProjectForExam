@@ -4,7 +4,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.fasttrack.pages.*;
 
 public class BaseSteps extends ScenarioSteps {
-    protected LoginPage loginPage;
+
     protected AccountPage accountPage;
 
     protected HomePage homePage;
@@ -12,5 +12,6 @@ public class BaseSteps extends ScenarioSteps {
     protected SearchResultsPage searchResultsPage;
     protected ProductPage productPage;
     protected CartPage cartPage;
+    protected CheckoutPage checkoutPage;
 
 }

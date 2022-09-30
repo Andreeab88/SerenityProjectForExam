@@ -52,8 +52,14 @@ public class AccountPage extends BasePage{
 
     @FindBy(css = ".woocommerce > div[class*=\"woocommerce-\"]")
     private WebElementFacade succesMessageForRecoveryTheLostPass;
-
-
+    @FindBy(css = "h2.entry-title")
+    private WebElementFacade titleMyAccountPage;
+    @FindBy(css = ".woocommerce-error li strong")
+    private WebElementFacade errorWrongUsernameLogin;
+    @FindBy(css = ".woocommerce-error li strong strong")
+    private WebElementFacade errorWrongPassLogin;
+    @FindBy(css = ".woocommerce-error li strong")
+    private WebElementFacade errorNoCredentials;
 
 
 
@@ -90,7 +96,6 @@ public class AccountPage extends BasePage{
         clickOn(loginButton);
 
     }
-
     public String getSuccesMessageLogin(){
       return   succesMessageLogin.getText();
     }
@@ -108,7 +113,8 @@ public class AccountPage extends BasePage{
     }
 
     public void setEmailForLostPassField(String email) {
-        typeInto(emailField, email);
+        waitFor(emailForLostPassField);
+        typeInto(emailForLostPassField, email);
     }
 
     public String getSuccesMessageForRecoveryTheLostPass(){
@@ -118,4 +124,19 @@ public class AccountPage extends BasePage{
 public void clickResetPassButton(){
         clickOn(resetPassButton);
 }
+    public String checkMyAccountPageTitle(){
+        return    titleMyAccountPage.getText();
+    }
+
+    public String checkErrorTextWrongUsername(){
+        return    errorWrongUsernameLogin.getText();
+    }
+    public String checkErrorTextPass(){
+        return    errorWrongPassLogin.getText();
+    }
+    public String checkErrorTextLoginWithoutCredentials(){
+        return    errorNoCredentials.getText();
+    }
+
+
 }
