@@ -11,7 +11,7 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void navigateToHomepage(){
-        homePage.open();
+        homePage.clickOnHomeButton();
     }
 
 
@@ -33,13 +33,14 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void logOutStep(){
+        homePage.clickOnMyAccountButton();
         accountPage.clickLogOutButton();
         waitABit(500);
     }
 
     @Step
     public void loginUsingBadEmailFormatSteps(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("andreea1988iusti2015&gmail.com");
         accountPage.setPassField(USER_PASS);}
@@ -52,7 +53,7 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void verifySuccesLoginWithLowerCaseEmailInserted(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("ANDREEA1988IUSTI2015@GMAIL.COM");
         accountPage.setPassField(USER_PASS);
@@ -60,7 +61,7 @@ public class LoginSteps extends BaseSteps{
     }
     @Step
     public void loginUsingWrongEmailInserted(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("iusti2015andreea1988@gmail.com");
         accountPage.setPassField(USER_PASS);

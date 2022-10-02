@@ -14,18 +14,21 @@ public class ProductSteps extends BaseSteps{
     }
     @Step
     public void writeReviewAboutProductAlbum(){
-        productPage.clickOnReviewStarsAboutProductAlbumButton();
-        productPage.setReviewCommentAboutProductAlbum("The best!");
+        productPage.clickOnReviewButton();}
+    @Step
+    public void writeReviewAboutProductAlbum1(){
+        productPage.clickOnReviewStarsAboutProductAlbumButton();}
+    @Step
+    public void writeReviewAboutProductAlbum2(){
+        productPage.setReviewCommentAboutProductAlbum("great!");}
+    @Step
+    public void writeReviewAboutProductAlbum3(){
         productPage.clickSubmitReviewCommentButton();
     }
 @Step
 public void checkSuccesMessageReview(){
-    String expected ="Your review is awaiting approval\n" +
-            "\n" +
-            "The best!";
+    String expected ="Your review is awaiting approval";
     String actual = productPage.checkSuccesMessageReviewAboutProductAlbum();
-    System.out.println(expected);
-    System.out.println(actual);
     Assert.assertEquals(expected,actual);
 }
 
@@ -42,6 +45,14 @@ productPage.setInputQtyProduct(Qty1);
 productPage.clickAddToCartButton();
 
     }
+
+    @Step
+    public void checkErrorWriteReviewWithoutLoggIn(){
+        String expected = "You must be logged in to post a review.".toLowerCase();
+        String actual = productPage.getErrorWriteReviewWhitoutLoggIn().toLowerCase();
+        Assert.assertEquals(expected,actual);
+    }
+
 
 
 

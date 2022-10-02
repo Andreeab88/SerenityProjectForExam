@@ -9,16 +9,35 @@ import static org.fasttrack.utils.Constants.USER_PASS;
 public class CheckoutSteps extends BaseSteps{
 
 @Step
-public void completeCheckoutFormularLoggedIn(){
-    checkoutPage.setFirstNameCheckoutFormular("Andreea");
-    checkoutPage.setLastNameCheckoutFormular("Boboc");
-    checkoutPage.selectDropDownCountry();
-    checkoutPage.setAdressCheckoutFormular("Iasi");
-    checkoutPage.setCityCheckoutFormular("Iasi");
-    checkoutPage.setPostcodeCheckoutFormular("765748");
-    checkoutPage.setPhoneNumberCheckoutFormular("0711111111");
-    checkoutPage.setEmailCheckoutFormular(USER_EMAIL);
-    checkoutPage.clickPlaceOrderCheckout();
+public void completeCheckoutFormularLoggedIn(String firstName,String lastName){
+    checkoutPage.setFirstNameCheckoutFormular(firstName);
+
+
+        checkoutPage.setLastNameCheckoutFormular(lastName);
+
+checkoutPage.clickOnBoxCountry();
+
+        checkoutPage.clickForSearchCountry();
+
+checkoutPage.findCountrytInGridAndOpen("Romania");
+
+
+        checkoutPage.setAdressCheckoutFormular("Iasi");
+
+
+        checkoutPage.setCityCheckoutFormular("Iasi");
+
+
+        checkoutPage.setPostcodeCheckoutFormular("765748");
+
+
+        checkoutPage.setPhoneNumberCheckoutFormular("0711111111");
+
+
+        checkoutPage.setEmailCheckoutFormular(USER_EMAIL);
+
+
+        checkoutPage.clickPlaceOrderCheckout();
 }
 @Step
 public void verifyTitlePageOfReceivedOrder(){
@@ -28,8 +47,8 @@ public void verifyTitlePageOfReceivedOrder(){
 }
     @Step
     public void verifySuccesMessageOfReceivedOrder(){
-        String expected = "Thank you. Your order has been received.".toLowerCase();
-        String actual = checkoutPage.verifySuccesMessageReceivedOrder().toLowerCase();
+        String expected = "Thank you. Your order has been received.";
+        String actual = checkoutPage.verifySuccesMessageReceivedOrder();
         Assert.assertEquals(expected,actual);
     }
     @Step
@@ -40,6 +59,7 @@ public void verifyTitlePageOfReceivedOrder(){
     }
 @Step
 public void loginOnCheckoutPageSteps(){
+    checkoutPage.clickForLoginCheckout();
     checkoutPage.setEmailForLoginCheckout(USER_EMAIL);
     checkoutPage.setPasswordForLoginCheckout(USER_PASS);
     checkoutPage.clickRememberCredentialsButton();
@@ -48,7 +68,7 @@ public void loginOnCheckoutPageSteps(){
 }
 @Step
     public void verifyCheckoutPageWithNoProductsSteps(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnCheckoutButton();
     }
 

@@ -15,7 +15,7 @@ public class SearchTest extends BaseTest{
   public void searchProductByPopularityTest(){
     homeSteps.verifyNameSite("FASTTRACKIT");
     productSteps.searchProductByPopularity();
-    productSteps.viewProduct("Hoogie with Zipper");
+    cartSteps.addToCartProduct2Steps();
   }
 
 

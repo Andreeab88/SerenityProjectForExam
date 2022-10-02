@@ -9,6 +9,8 @@ public class CartTest extends BaseTest{
     @Test
     public void addToCartTestWithLogin() {
 homeSteps.verifyNameSite("FASTTRACKIT");
+loginSteps.navigateToHomepage();
+homeSteps.goToMyAccount();
 loginSteps.loginWithValidCredentialsStep(Constants.USER_EMAIL,Constants.USER_PASS);
         searchSteps.searchProductNameStep();
         productSteps.selectProductImage("Album");
@@ -17,10 +19,10 @@ loginSteps.loginWithValidCredentialsStep(Constants.USER_EMAIL,Constants.USER_PAS
         cartSteps.setQtyAndViewCartSteps("2");
         cartSteps.addProductInCartStep();
         productSteps.writeReviewAboutProductAlbum();
+        productSteps.writeReviewAboutProductAlbum2();
+        productSteps.writeReviewAboutProductAlbum3();
         productSteps.checkSuccesMessageReview();
     }
-
-
 
     @Test
     public void addProductsInCartTestWhitoutLogin() {
@@ -32,39 +34,53 @@ loginSteps.loginWithValidCredentialsStep(Constants.USER_EMAIL,Constants.USER_PAS
         cartSteps.setQtyAndViewCartSteps("2");
         cartSteps.addProductInCartStep();
         productSteps.writeReviewAboutProductAlbum();
-        productSteps.checkSuccesMessageReview();
-        homeSteps.goToCart();
-        cartSteps.emptyCartSteps();
+        productSteps.checkErrorWriteReviewWithoutLoggIn();
     }
     @Test
     public void add2ProductsInCartAndCheckSubtotalAndTotalTest(){
 
         homeSteps.goToShop();
-        cartSteps.addProduct1InCartSteps("Polo");
-        cartSteps.checkSuccesMessageProducts1IsInCartSteps("Polo");
+        cartSteps.addProduct1InCartSteps("Hoodie with Logo");
+        cartSteps.addProduct1InCartSteps1("2");
+        cartSteps.addProduct1InCartSteps2("Hoodie with Logo");
+        cartSteps.checkSuccesMessageProducts1IsInCartSteps("Hoodie with Logo");
         cartSteps.addToCartProducts1Step();
 
-        cartSteps.navigateToShopPages();
+        cartSteps.navigateToShopPage();
 
-        cartSteps.addProducts2InCartSteps("Sunglasses");
-        cartSteps.checkSuccesMessageProducts2IsInCartSteps("Sunglasses");
+        cartSteps.addProducts2InCartSteps("Hoodie with Zipper");
+        cartSteps.checkSuccesMessageProducts2IsInCartSteps("Hoodie with Zipper");
         cartSteps.addToCartProduct2Steps();
-
-        cartSteps.emptyCartSteps();
+      cartSteps.setQtyInCartPage1("2");
         cartSteps.checkSubtotalPriceStep();
+        cartSteps.checkShip();
+
         cartSteps.checkTotalPriceStep();
+        cartSteps.checkTotal();
     }
 
-   @Test
+    @Test
     public void applyWrongCouponTest(){
+        cartSteps.navigateToShopPage();
+        cartSteps.addProducts2InCartSteps("Hoodie with Zipper");
+        cartSteps.checkSuccesMessageProducts2IsInCartSteps("Hoodie with Zipper");
+        cartSteps.addToCartProduct2Steps();
+        cartSteps.setQtyInCartPage1("2");
+
+        cartSteps.apllyWrongCouponSteps1("woo-hoodie-with-zipper");
         cartSteps.apllyWrongCouponSteps();
-        cartSteps.checkErrorMessageWrongCouponSteps();
+        cartSteps.checkErrorMessageWrongCouponSteps("woo-hoodie-with-zipper");
    }
    @Test
     public void removeProductFromCartTest(){
+       cartSteps.navigateToShopPage();
+       cartSteps.addProducts2InCartSteps("Hoodie with Zipper");
+       cartSteps.checkSuccesMessageProducts2IsInCartSteps("Hoodie with Zipper");
+       cartSteps.addToCartProduct2Steps();
+       cartSteps.setQtyInCartPage1("2");
         cartSteps.clickOnToRemoveProductFromCart();
         cartSteps.checkSuccesMessageRemoveProductFromCartSteps();
-        cartSteps.returnToShopStep();
+        homeSteps.goToHomeButton();
     }
 @Test
     public void checkIfCheckoutIsAvailableWithEmptyCart(){

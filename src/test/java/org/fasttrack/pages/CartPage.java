@@ -8,8 +8,9 @@ import java.util.List;
 
 public class CartPage extends BasePage {
 
-    @FindBy(css = "p.cart-empty")
-    private WebElementFacade emptyCart;
+
+    @FindBy(css = "remove.remove_from_cart_button")
+    private WebElementFacade removeProductFromCartHomePage;
 
     @FindBy(css = "i.dashicons.dashicons-menu")
     private WebElementFacade menuButton;
@@ -17,37 +18,41 @@ public class CartPage extends BasePage {
     @FindBy(css = "#menu-main")
     private List<WebElementFacade> menuList;
 
-    @FindBy(css = ".product-subtotal.amount")
+    @FindBy(css = ".woocommerce .shop_table input.qty")
+    private WebElementFacade qtyInCartPage1;
+
+    @FindBy(css = ".woocommerce .shop_table input.qty")
+    private WebElementFacade qtyInCartPage2;
+
+    @FindBy(css = "td.product-subtotal")
     private List<WebElementFacade> subtotalProductsList;
 
-    @FindBy(css = ".cart-subtotal td")
+    @FindBy(css = ".cart_totals td")
     private WebElementFacade subtotalCartPrices;
-    @FindBy(css = ".shipping.amount")
+    @FindBy(css = "[data-title='Shipping'] span.amount")
     private WebElementFacade shippingTax;
-    @FindBy(css = "tr.order-total.amount")
+    @FindBy(css = "tr.order-total span.amount")
     private WebElementFacade totalCartPrice;
-    @FindBy(css = "#coupon-code")
+    @FindBy(css = "#coupon_code")
     private WebElementFacade couponCode;
-    @FindBy(css = ".coupon input.coupon")
+    @FindBy(css = "input.button")
     private WebElementFacade applyCoupon;
-    @FindBy(css = ".woocommerce-error li")
+    @FindBy(css = "ul.woocommerce-error li")
     private WebElementFacade errorMessageWrongCoupon;
     @FindBy(css = "checkout-button.button.alt.wc-forward")
     private WebElementFacade proceedToCheckout;
-    @FindBy(css = "#data-product_id=26")
+    @FindBy(css = "td.product-remove a.remove")
     private WebElementFacade removeProductFromCart;
-    @FindBy(css = "div.woocommerce-message a")
+    @FindBy(css = "div.woocommerce-message")
     private WebElementFacade succesMessageRemoveProductFromCart;
     @FindBy(css = "a.button wc-backward")
     private WebElementFacade returnToShopButton;
-    @FindBy(css = "div.woocommerce-info")
+    @FindBy(css = "div.woocommerce .woocommerce-info")
     private WebElementFacade errorCheckoutMessageCartEmpty;
 
 
 
-    public void verifyEmptyCart() {
-        emptyCart.shouldContainOnlyText("Your cart is currently empty.");
-    }
+
     public void clickOnMenuButton() {
         clickOn(menuButton);
     }
@@ -59,10 +64,19 @@ public class CartPage extends BasePage {
             }
         }
     }
+
+    public void setQtyInCartPage1(String qtyFromCartPage){
+        typeInto(qtyInCartPage1,qtyFromCartPage);
+    }
+    public void setQtyInCartPage2(String qtyFromCartPage){
+        typeInto(qtyInCartPage1,qtyFromCartPage);
+    }
+
+
     public int getSubtotalFromProductsList() {
         int sum = 0;
         for (WebElementFacade elementFacade : subtotalProductsList) {
-            sum += convertStringToInteger(elementFacade.getText());
+            sum+= convertStringToInteger(elementFacade.getText());
         }
         return sum;
     }
@@ -80,6 +94,14 @@ public class CartPage extends BasePage {
         int actualTotal = convertStringToInteger(totalCartPrice.getText());
         return expectedTotal == actualTotal;
     }
+public String checkshiptax(){
+    return    shippingTax.getText();
+}
+    public String checktotal(){
+      return  totalCartPrice.getText();
+    }
+
+
     public void setWrongCouponCode(String wrongCouponCode) {
         typeInto(couponCode, wrongCouponCode);
     }

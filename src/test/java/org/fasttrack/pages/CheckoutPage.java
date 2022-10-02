@@ -7,13 +7,22 @@ import java.util.List;
 
 public class CheckoutPage extends BasePage{
 
+
+
     @FindBy(css = "#billing_first_name")
     private WebElementFacade firstNameCheckoutFormular;
 
     @FindBy(css = "#billing_last_name")
     private WebElementFacade lastNameCheckoutFormular;
-    @FindBy(css = "#select2-billing_country-container")
-    private List<WebElementFacade> dropDown_CountryCheckoutFormular;
+
+    @FindBy(css = "span.selection")
+    private WebElementFacade boxCountry;
+
+    @FindBy(css = "span.select2-selection__arrow b")
+    private WebElementFacade searchCountry;
+
+    @FindBy(css = "li.select2-results_option.select2-results__option--highlighted")
+    private List<WebElementFacade> selectCountry;
     @FindBy(css = "#billing_address_1")
     private WebElementFacade adressCheckoutFormular;
     @FindBy(css = "#billing_city")
@@ -26,11 +35,11 @@ public class CheckoutPage extends BasePage{
     private WebElementFacade emailCheckoutFormular;
     @FindBy(css = "#place_order")
     private WebElementFacade placeOrder;
-    @FindBy(css = "h2.entry-title")
+    @FindBy(css = "article#post-6 h2.entry-title")
     private WebElementFacade titleReceivedOrder;
-    @FindBy(css = ".woocommerce-thankyou-order-received")
+    @FindBy(css = ".woocommerce > div[class*=\"woocommerce-\"] p")
     private WebElementFacade succesMessageReceivedOrder;
-    @FindBy(css = ".woocommerce-info.showlogin")
+    @FindBy(css = "div.woocommerce-info")
     private WebElementFacade messageNotLoginForCheckout;
     @FindBy(css = "#username")
     private WebElementFacade emailForLoginCheckout;
@@ -38,8 +47,13 @@ public class CheckoutPage extends BasePage{
     private WebElementFacade passwordForLoginCheckout;
     @FindBy(css = "#rememberme")
     private WebElementFacade rememberButtonForLoginCheckout;
+
     @FindBy(css = ".button[name='login']")
     private WebElementFacade loginButtonForCheckout;
+
+    @FindBy(css = "div.woocommerce-info a.showlogin")
+    private WebElementFacade clickForLoginCheckout;
+
 
 
 
@@ -49,14 +63,26 @@ public class CheckoutPage extends BasePage{
         typeInto(firstNameCheckoutFormular,firstName);
     }
     public void setLastNameCheckoutFormular(String lastName){
-        typeInto(firstNameCheckoutFormular,lastName);
+        typeInto(lastNameCheckoutFormular,lastName);
     }
 
-    public void selectDropDownCountry(){
-        for(WebElementFacade elementFacade: dropDown_CountryCheckoutFormular){
-            elementFacade.selectByValue("Romania");
-        }
+    public void clickOnBoxCountry(){
+        clickOn(boxCountry);
     }
+    public void clickForSearchCountry(){
+        clickOn(searchCountry);
+    }
+
+    public boolean findCountrytInGridAndOpen(String country){
+        for (WebElementFacade element : selectCountry){
+            if (element.getText().equalsIgnoreCase(country)){
+                element.click();
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setAdressCheckoutFormular(String adress){
         typeInto(adressCheckoutFormular,adress);
     }
@@ -76,13 +102,17 @@ public void clickPlaceOrderCheckout(){
         clickOn(placeOrder);
 }
 public String verifyTitleReceivedOrder(){
-        return titleReceivedOrder.getText();
+        return titleReceivedOrder.getTextContent();
 }
     public String verifySuccesMessageReceivedOrder(){
         return succesMessageReceivedOrder.getText();
     }
     public String verifyMessageNotLoginForCheckout(){
-        return succesMessageReceivedOrder.getText();
+        return messageNotLoginForCheckout.getText();
+    }
+
+    public void clickForLoginCheckout(){
+        clickOn(clickForLoginCheckout);
     }
     public void setEmailForLoginCheckout(String email){
         typeInto(emailForLoginCheckout,email);

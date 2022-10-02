@@ -35,8 +35,11 @@ public class ProductPage extends BasePage {
     @FindBy(css = ".woocommerce div.product form.cart div.quantity")
     private WebElementFacade inputQtyProduct;
 
-    @FindBy(css = ".woocommerce .cart .button")
+    @FindBy(css = ".button.wc-forward")
     private WebElementFacade addToCartButton;
+
+    @FindBy(css = "#tab-title-reviews")
+    private WebElementFacade openReviewField;
 
     @FindBy(css = "span a.star-5")
     private WebElementFacade reviewStarsdAboutproductAlbum;
@@ -44,34 +47,39 @@ public class ProductPage extends BasePage {
     @FindBy(css = "#comment")
     private WebElementFacade reviewCommentField;
 
-    @FindBy(css = "#input")
+    @FindBy(css = "#submit")
     private WebElementFacade submitReviewCommentField;
 
-    @FindBy(css = ".woocommerce-review__awaiting-approval.description")
+    @FindBy(css = "#comment-664 em")
     private WebElementFacade succesMessageReviewProductAlbum;
 
-@FindBy(css = "ul.page-numbers:nth-child(4)")
-private List<WebElementFacade> listOfProductsFromProductPage;
+@FindBy(css = ".product-details a.title")
+private List<WebElementFacade> listProduct1;
 
-    @FindBy(css = "#quantity_6336e86a762e5")
+    @FindBy(css = "input[type=number]")
     private WebElementFacade qtyProducts1;
 
-    @FindBy(css = ".quantity [value='26']")
+    @FindBy(css = ".woocommerce div.product form.cart .button")
 private WebElementFacade addToCartProducts1;
     @FindBy(css = ".woocommerce-message")
     private WebElementFacade successMessageProducts1InCart;
-    @FindBy(css = "a.button.wc-forward")
+    @FindBy(css = ".woocommerce-message a.button")
     private WebElementFacade viewCartProducts1;
-    @FindBy(css = "#quantity_633707013f9a9")
-    private WebElementFacade qtyProducts2;
-    @FindBy(css = "#quantity_633707013f9a9 button")
+
+    @FindBy(css = ".product-details a.title")
+    private List<WebElementFacade> listProduct2;
+    @FindBy(css = "input[type=number]")
+    private WebElementFacade qtyProduct2;
+    @FindBy(css = ".woocommerce div.product form.cart .button")
     private WebElementFacade addToCartProducts2;
-    @FindBy(css = ".wcm-main.woocommerce-message")
+    @FindBy(css = ".woocommerce-message")
     private WebElementFacade successMessageProducts2InCart;
-    @FindBy(css = ".widget_shopping_cart_content ul li")
+    @FindBy(css = ".button.wc-forward")
     private WebElementFacade viewCartProducts2;
     @FindBy(css = "#pro-preview .item a")
     private WebElementFacade viewCartProducts2a;
+    @FindBy(css = "#respond p")
+    private WebElementFacade errorWriteReviewWithoutLoggIn;
 
 
 
@@ -118,6 +126,9 @@ private WebElementFacade addToCartProducts1;
     public void clickAddToCartButton() {
         clickOn(addToCartButton);
     }
+    public void clickOnReviewButton() {
+        clickOn(openReviewField);
+    }
 
     public void clickOnReviewStarsAboutProductAlbumButton() {
         clickOn(reviewStarsdAboutproductAlbum);
@@ -133,50 +144,67 @@ private WebElementFacade addToCartProducts1;
 
     public String checkSuccesMessageReviewAboutProductAlbum() {
         return succesMessageReviewProductAlbum.getText();}
-    public void selectProducts1FromListAndSelect(String itemName) {
-        for (WebElementFacade element : listOfProductsFromProductPage) {
-            if (element.findElement(By.cssSelector(".item.post-26 a.title")).getText().equalsIgnoreCase(itemName)) {
-                element.findElement(By.cssSelector(".item.post-26 a.title")).click();
-                break;
+
+
+    public boolean findProductInGridAndOpen1(String productName){
+        for (WebElementFacade element : listProduct1){
+            if (element.getText().equalsIgnoreCase(productName)){
+                element.click();
+                return true;
             }
         }
+        return false;
     }
+
 
     public void setInputQtyProducts1(String quantity1) {
-        typeInto(qtyProducts1, quantity1);
-    }
-    public void clickOnAddToCartButtonOfProducts1() {
-        clickOn(addToCartProducts1);
-    }
-    public String checkSuccesMessageProducts1IsInCart() {
-        return successMessageProducts1InCart.getText().replace("View cart\n", "");
-    }
-    public void clickOnViewCartButtonProducts1() {
-        clickOn(viewCartProducts1);
-    }
-    public void selectProducts2FromListAndSelect(String itemName) {
-        for (WebElementFacade element : listOfProductsFromProductPage) {
-            if (element.findElement(By.cssSelector(".item.post-22 a.title")).getText().equalsIgnoreCase(itemName)) {
-                element.findElement(By.cssSelector(".item.post-22 a.title")).click();
-                break;
+                typeInto(qtyProducts1, quantity1);
+            }
+
+            public void clickOnAddToCartButtonOfProducts1() {
+                clickOn(addToCartProducts1);
+            }
+
+            public String checkSuccesMessageProducts1IsInCart() {
+                return successMessageProducts1InCart.getText().replace("View cart\n", "");
+            }
+
+            public void clickOnViewCartButtonProducts1() {
+                clickOn(viewCartProducts1);
+            }
+
+    public boolean findProductInGridAndOpen2(String productName){
+        for (WebElementFacade element : listProduct2){
+            if (element.getText().equalsIgnoreCase(productName)){
+                element.click();
+                return true;
             }
         }
-    }
-    public void setInputQtyProducts2(String quantity2) {
-        typeInto(qtyProducts2, quantity2);
-    }
-    public void clickOnAddToCartButtonOfProducts2() {
-        clickOn(addToCartProducts2);
-    }
-    public String checkSuccesMessageProducts2IsInCart() {
-        return successMessageProducts2InCart.getText().replace("View cart\n", "");
-    }
-    public void clickOnViewCartButtonProducts2() {
-        clickOn(viewCartProducts2);
-    }
-    public void clickOnViewCartButtonProducts2a() {
-        clickOn(viewCartProducts2a);
+        return false;
     }
 
+            public void setInputQtyProducts2(String quantity2) {
+                typeInto(qtyProduct2, quantity2);
+            }
 
-}
+            public void clickOnAddToCartButtonOfProducts2() {
+                clickOn(addToCartProducts2);
+            }
+
+            public String checkSuccesMessageProducts2IsInCart() {
+                return successMessageProducts2InCart.getText().replace("View cart\n", "");
+            }
+
+            public void clickOnViewCartButtonProducts2() {
+                clickOn(viewCartProducts2);
+            }
+
+            public void clickOnViewCartButtonProducts2a() {
+                clickOn(viewCartProducts2a);
+            }
+
+            public String getErrorWriteReviewWhitoutLoggIn() {
+                return errorWriteReviewWithoutLoggIn.getText();
+            }
+
+        }

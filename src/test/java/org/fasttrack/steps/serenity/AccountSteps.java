@@ -10,7 +10,7 @@ import static org.fasttrack.utils.Constants.USER_PASS;
 public class AccountSteps extends BaseSteps{
     @Step
     public void verifyTextAccountPage(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();}
         @Step
         public void checkTitleTextFromMyAccountPage(){

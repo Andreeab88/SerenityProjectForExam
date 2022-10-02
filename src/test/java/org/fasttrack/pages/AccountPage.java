@@ -2,7 +2,10 @@ package org.fasttrack.pages;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
 
+
+@DefaultUrl("http://qa2.fasttrackit.org:8008")
 public class AccountPage extends BasePage{
 
                                                //for register
@@ -15,7 +18,7 @@ public class AccountPage extends BasePage{
     @FindBy(css = "button[name='register']")
     private WebElementFacade registerButton;
 
-    @FindBy(css = ".woocommerce .woocommerce-error")
+    @FindBy(css = "ul.woocommerce-error li")
     private WebElementFacade errorRegisterMessage;
 
 
@@ -54,7 +57,7 @@ public class AccountPage extends BasePage{
     private WebElementFacade succesMessageForRecoveryTheLostPass;
     @FindBy(css = "h2.entry-title")
     private WebElementFacade titleMyAccountPage;
-    @FindBy(css = ".woocommerce-error li strong")
+    @FindBy(css = "ul.woocommerce-error li")
     private WebElementFacade errorWrongUsernameLogin;
     @FindBy(css = ".woocommerce-error li strong strong")
     private WebElementFacade errorWrongPassLogin;

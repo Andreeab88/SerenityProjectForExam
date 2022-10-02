@@ -31,67 +31,97 @@ public void checkSuccessMessageSteps(String productName1) {
 
     @Step
     public void addProduct1InCartSteps(String product1Name){
-        productPage.selectProducts1FromListAndSelect("Polo");
-        productPage.setInputQtyProducts1("2");
+
+        productPage.findProductInGridAndOpen1(product1Name);
+    }
+
+    @Step
+    public void addProduct1InCartSteps1(String quantity1){
+        productPage.setInputQtyProducts1(quantity1);}
+
+    @Step
+    public void addProduct1InCartSteps2(String product1Name){
         productPage.clickOnAddToCartButtonOfProducts1();
     }
-@Step
+
+    @Step
     public void checkSuccesMessageProducts1IsInCartSteps(String product1Name){
-    String expected ="2 x “"+ product1Name +"” have been added to your cart.".toLowerCase();
-    String actual = productPage.checkSuccesMessageProducts1IsInCart().toLowerCase();
+    String expected ="2 × “"+ product1Name +"” have been added to your cart.";
+    String actual = productPage.checkSuccesMessageProducts1IsInCart();
     System.out.println(expected);
     System.out.println(actual);
     Assert.assertEquals(expected,actual);
 }
 @Step
     public void addToCartProducts1Step(){
-        productPage.clickOnViewCartButtonProducts1();
+        homePage.clickOnCartButton();
+        //productPage.clickOnViewCartButtonProducts1();
 }
 @Step
-    public void navigateToShopPages(){
-        cartPage.clickOnMenuButton();
-        cartPage.selectItemFromList("Shop");
+    public void navigateToShopPage(){
+       homePage.clickOnHomeButton();
+       homePage.clickOnShopButton();
+
 }
     @Step
-    public void addProducts2InCartSteps(String products1Name){
-        productPage.selectProducts2FromListAndSelect("Polo");
+    public void addProducts2InCartSteps(String products2Name){
+        productPage.findProductInGridAndOpen2(products2Name);
         productPage.setInputQtyProducts2("2");
         productPage.clickOnAddToCartButtonOfProducts2();
     }
     @Step
     public void checkSuccesMessageProducts2IsInCartSteps(String products2Name){
-        String expected ="2 x “"+ products2Name +"” have been added to your cart.".toLowerCase();
-        String actual = productPage.checkSuccesMessageProducts2IsInCart().toLowerCase();
+        String expected ="2 × “"+ products2Name +"” have been added to your cart.";
+        String actual = productPage.checkSuccesMessageProducts2IsInCart();
         System.out.println(expected);
         System.out.println(actual);
         Assert.assertEquals(expected,actual);
     }
     @Step
     public void addToCartProduct2Steps(){
-        productPage.clickOnViewCartButtonProducts2();
-        productPage.clickOnViewCartButtonProducts2a();
+        homePage.clickOnCartButton();
+        //productPage.clickOnViewCartButtonProducts2();
+      //  productPage.clickOnViewCartButtonProducts2a();
     }
+
     @Step
-    public void emptyCartSteps(){
-        homePage.open();
-        cartPage.verifyEmptyCart();
+    public void setQtyInCartPage1(String qtyFomCartPage){
+        cartPage.setQtyInCartPage1(qtyFomCartPage);
+        cartPage.setQtyInCartPage2(qtyFomCartPage);
     }
+
     @Step
     public void checkSubtotalPriceStep(){
         Assert.assertTrue(cartPage.checkIfSubtotalsMatches());
+
     }
     @Step
     public void checkTotalPriceStep(){
         Assert.assertTrue(cartPage.checkIfTotalPricesMatches());
     }
     @Step
-    public void apllyWrongCouponSteps(){
-        cartPage.clickApplyWrongCouponButton();
-        cartPage.setWrongCouponCode("woo-polo");
+    public void checkShip(){
+        String expected = "10,00 lei";
+        String actual = cartPage.checkshiptax();
+        Assert.assertEquals(expected,actual);
     }
     @Step
-    public void checkErrorMessageWrongCouponSteps(){
-        String expected = "Coupon \"woo-polo\" does not exist!";
+    public void checkTotal(){
+        String expected = "190,00 lei";
+        String actual = cartPage.checktotal();
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Step
+    public void apllyWrongCouponSteps(){
+        cartPage.clickApplyWrongCouponButton();}
+    @Step
+    public void apllyWrongCouponSteps1(String coupon){
+        cartPage.setWrongCouponCode(coupon);
+    }
+    @Step
+    public void checkErrorMessageWrongCouponSteps(String prodName){
+        String expected = "Coupon \"woo-hoodie-with-zipper\" does not exist!";
         String actual = cartPage.getErrorMessageAboutWrongCoupon();
         Assert.assertEquals(expected,actual);
     }
@@ -105,14 +135,11 @@ public void checkSuccessMessageSteps(String productName1) {
     }
     @Step
     public void checkSuccesMessageRemoveProductFromCartSteps(){
-        String expected = "“Sunglasses” removed. Undo?";
+        String expected = "“Hoodie with Zipper” removed. Undo?";
         String actual =cartPage.getSuccesMessageRemoveProductFromCart();
                 Assert.assertEquals(expected,actual);
     }
-    @Step
-    public void returnToShopStep(){
-        cartPage.clickReturnToShopButton();
-    }
+
 @Step
     public void checkIfCheckoutIsAvailableWithCartEmpty(){
     String expected = "Checkout is not available whilst your cart is empty.";
