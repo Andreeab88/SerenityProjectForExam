@@ -22,11 +22,10 @@ public class CheckoutTest extends BaseTest {
         cartSteps.setQtyAndViewCartSteps("2");
         cartSteps.addProductInCartStep();
         homeSteps.goToCheckout();
-        wait(3);
         checkoutSteps.completeCheckoutFormularLoggedIn("Andreea","Boboc");
-        // checkoutSteps.verifyTitlePageOfReceivedOrder();
-     checkoutSteps.verifySuccesMessageOfReceivedOrder();
-        loginSteps.logOutStep();
+        wait(3);
+        checkoutSteps.clickToPlaceOrderCheckout();
+
     }
     @Test
     public void completeCheckoutFormularWithoutLoggIn(){
@@ -37,12 +36,11 @@ public class CheckoutTest extends BaseTest {
         cartSteps.addProduct1InCartSteps2("Hoodie with Logo");
         cartSteps.checkSuccesMessageProducts1IsInCartSteps("Hoodie with Logo");
         cartSteps.addToCartProducts1Step();
-
         homeSteps.goToCheckout();
         checkoutSteps.completeCheckoutFormularLoggedIn("Andreea","Boboc");
-        //checkoutSteps.verifyTitlePageOfReceivedOrder();
-        checkoutSteps.verifySuccesMessageOfReceivedOrder();
-        loginSteps.logOutStep();
+checkoutSteps.setEmailCheckoutFormularLoggedIn("andreea1988iusti2015@gmail.com");
+checkoutSteps.clickToPlaceOrderCheckout();
+
     }
 
     @Test

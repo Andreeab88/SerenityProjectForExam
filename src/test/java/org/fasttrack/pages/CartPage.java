@@ -21,7 +21,7 @@ public class CartPage extends BasePage {
     @FindBy(css = ".woocommerce .shop_table input.qty")
     private WebElementFacade qtyInCartPage1;
 
-    @FindBy(css = ".woocommerce .shop_table input.qty")
+    @FindBy(css = "div.quantity input#quantity_633ab8691ec90")
     private WebElementFacade qtyInCartPage2;
 
     @FindBy(css = "td.product-subtotal")
@@ -41,14 +41,16 @@ public class CartPage extends BasePage {
     private WebElementFacade errorMessageWrongCoupon;
     @FindBy(css = "checkout-button.button.alt.wc-forward")
     private WebElementFacade proceedToCheckout;
-    @FindBy(css = "td.product-remove a.remove")
+    @FindBy(css = ".woocommerce .shop_table .cart_item .product-remove a")
     private WebElementFacade removeProductFromCart;
     @FindBy(css = "div.woocommerce-message")
     private WebElementFacade succesMessageRemoveProductFromCart;
     @FindBy(css = "a.button wc-backward")
     private WebElementFacade returnToShopButton;
-    @FindBy(css = "div.woocommerce .woocommerce-info")
+    @FindBy(css = "div.woocommerce p.cart-empty")
     private WebElementFacade errorCheckoutMessageCartEmpty;
+    @FindBy(css = "button[name='update_cart']")
+    private WebElementFacade updateCartButton;
 
 
 
@@ -132,6 +134,10 @@ public String checkshiptax(){
     }
     public String getErrorCheckoutEmptyCart() {
         return errorCheckoutMessageCartEmpty.getText();
+    }
+
+    public void clickUpdateCartButton() {
+        clickOn(updateCartButton);
     }
 
 }

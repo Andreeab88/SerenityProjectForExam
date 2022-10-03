@@ -19,21 +19,4 @@ public class SearchTest extends BaseTest{
   }
 
 
-
- //// @Test
- // public void loginSearchSelectRandom(){
- //   loginSteps.doLogin("danzanf@yahoo.com","abc123");
-  //  loginSearchSelectRandomSteps.clickOnCookieAcceptButton();
-  //  searchSteps.doSearch("aroma");
-  //  loginSearchSelectRandomSteps.totalNumberOfPages();
-   /// loginSearchSelectRandomSteps.randomPageNumber();
-  //  loginSearchSelectRandomSteps.navigateToRandomPage();
-   // loginSearchSelectRandomSteps.checkThatIsAtLeastOneProductInStockOnPage();
-   // loginSearchSelectRandomSteps.randomProduct();
-   // loginSearchSelectRandomSteps.selectAndAddToCart();
-  //  loginSearchSelectRandomSteps.navigateToCartPage();
-  //  loginSearchSelectRandomSteps.checkCartPage();
-  //  loginSearchSelectRandomSteps.compareSelectedProductWithCartProduct();
-   // loginSearchSelectRandomSteps.emptyCartBeforeExit();
- // }
-} 
+}

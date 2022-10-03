@@ -1,0 +1,20 @@
+
+Boboc Andreea -> FastTrackIT-QA2 -> http://qa2.fasttrackit.org:8008/
+
+
+Tema lucrării: Automated Acceptance Testing Framework utilizând Serenity BDD
+
+
+Descrierea lucrării :    FastTrackIT este o aplicaţie web utilizată pentru vânzarea de produse.
+
+        Am construit o arhitectura de testare automată in Java, care ruleaza scripturi automate pentru a rula
+ testele de regresie si au ca scop testarea anumitor functionalitati de baza ale aplicatiei, cum ar fi:
+
+•   Register, Login, Products,Cart, Checkout, Search - atat cu date valide, cat si invalide;
+
+Serenity este un framework pentru testare automată, bazat pe Selenium WebDriver care asigură următoarele avantaje:
+•   o interfață de programare (API) simplă și concisă pentru teste;
+•   o gamă largă și puternică de selectori;
+•   configurare simplă și rapidă;
+
+Tehnologii folosite :  Java, Selenium, JUnit, Serenity

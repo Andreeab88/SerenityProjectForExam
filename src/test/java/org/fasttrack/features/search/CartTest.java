@@ -37,6 +37,20 @@ loginSteps.loginWithValidCredentialsStep(Constants.USER_EMAIL,Constants.USER_PAS
         productSteps.checkErrorWriteReviewWithoutLoggIn();
     }
     @Test
+    public void addMoreProductsInCartTestWhitoutLogin1() {
+        homeSteps.verifyNameSite("FASTTRACKIT");
+        searchSteps.searchProductNameStep();
+        productSteps.selectProductImage("Album");
+        cartSteps.addProductInCartStep();
+        cartSteps.checkSuccessMessageAddMoreProductsInCartSteps("9999999999999999","Album");
+        cartSteps.setQtyAndViewCartSteps("9999999999999999");
+        cartSteps.addProductInCartStep();
+        homeSteps.goToCart();
+        cartSteps.setQtyInCartPage2("0");
+       cartSteps.UpdateCartStep();
+       homeSteps.goToHomeButton();
+        }
+    @Test
     public void add2ProductsInCartAndCheckSubtotalAndTotalTest(){
 
         homeSteps.goToShop();

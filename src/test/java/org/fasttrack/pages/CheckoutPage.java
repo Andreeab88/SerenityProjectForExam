@@ -33,11 +33,11 @@ public class CheckoutPage extends BasePage{
     private WebElementFacade phoneNumberCheckoutFormular;
     @FindBy(css = "#billing_email")
     private WebElementFacade emailCheckoutFormular;
-    @FindBy(css = "#place_order")
+    @FindBy(css = ".woocommerce #payment #place_order")
     private WebElementFacade placeOrder;
-    @FindBy(css = "article#post-6 h2.entry-title")
+    @FindBy(css = "#main h2.entry-title")
     private WebElementFacade titleReceivedOrder;
-    @FindBy(css = ".woocommerce > div[class*=\"woocommerce-\"] p")
+    @FindBy(css = "section.woocommerce-order-details p")
     private WebElementFacade succesMessageReceivedOrder;
     @FindBy(css = "div.woocommerce-info")
     private WebElementFacade messageNotLoginForCheckout;
@@ -102,6 +102,7 @@ public void clickPlaceOrderCheckout(){
         clickOn(placeOrder);
 }
 public String verifyTitleReceivedOrder(){
+
         return titleReceivedOrder.getTextContent();
 }
     public String verifySuccesMessageReceivedOrder(){

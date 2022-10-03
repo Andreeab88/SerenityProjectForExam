@@ -43,11 +43,15 @@ public class LoginSteps extends BaseSteps{
         homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("andreea1988iusti2015&gmail.com");
-        accountPage.setPassField(USER_PASS);}
+        accountPage.setPassField(USER_PASS);
+        accountPage.clickRememberMeButton();
+        accountPage.clickLoginButton();}
     @Step
     public void checkErrorTextUsingWrongEmail(){
-        String expected = "ERROR: Invalid username. Lost your password?";
+        String expected = "ERROR: Invalid email address. Lost your password?";
         String actual = accountPage.checkErrorTextWrongUsername();
+        System.out.println(expected);
+        System.out.println(actual);
         Assert.assertEquals(expected,actual);
     }
 
@@ -57,7 +61,8 @@ public class LoginSteps extends BaseSteps{
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("ANDREEA1988IUSTI2015@GMAIL.COM");
         accountPage.setPassField(USER_PASS);
-
+        accountPage.clickRememberMeButton();
+        accountPage.clickLoginButton();
     }
     @Step
     public void loginUsingWrongEmailInserted(){
@@ -65,15 +70,19 @@ public class LoginSteps extends BaseSteps{
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("iusti2015andreea1988@gmail.com");
         accountPage.setPassField(USER_PASS);
-
+        accountPage.clickRememberMeButton();
+        accountPage.clickLoginButton();
     }
 
     @Step
     public void loginUsingWrongPassword(String email, String password){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField( USER_EMAIL);
-        accountPage.setPassField("123456");}
+        accountPage.setPassField("123456");
+        accountPage.clickRememberMeButton();
+        accountPage.clickLoginButton();
+    }
     @Step
     public void verifyTextErrorUsingWrongPass(){
         String expected = "ERROR: The password you entered for the email address andreea1988iusti2015@gmail.com is incorrect. Lost your password?";

@@ -173,6 +173,7 @@ private WebElementFacade addToCartProducts1;
                 clickOn(viewCartProducts1);
             }
 
+
     public boolean findProductInGridAndOpen2(String productName){
         for (WebElementFacade element : listProduct2){
             if (element.getText().equalsIgnoreCase(productName)){

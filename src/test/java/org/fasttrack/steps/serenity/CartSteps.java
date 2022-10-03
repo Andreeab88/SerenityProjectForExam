@@ -22,7 +22,14 @@ public void checkSuccessMessageSteps(String productName1) {
     System.out.println(actual);
     Assert.assertEquals(expected,actual);
 }
-
+    @Step
+    public void checkSuccessMessageAddMoreProductsInCartSteps(String number,String productName1) {
+        String expected = "“"+ productName1 +"” has been added to your cart.";
+        String actual = productPage.checkSuccesMessageProductIsInCart();
+        System.out.println(expected);
+        System.out.println(actual);
+        Assert.assertEquals(expected,actual);
+    }
     @Step
     public void setQtyAndViewCartSteps(String Qty1){
         productPage.setInputQty(Qty1);
@@ -55,7 +62,7 @@ public void checkSuccessMessageSteps(String productName1) {
 @Step
     public void addToCartProducts1Step(){
         homePage.clickOnCartButton();
-        //productPage.clickOnViewCartButtonProducts1();
+
 }
 @Step
     public void navigateToShopPage(){
@@ -78,16 +85,20 @@ public void checkSuccessMessageSteps(String productName1) {
         Assert.assertEquals(expected,actual);
     }
     @Step
-    public void addToCartProduct2Steps(){
+    public void addToCartProduct2Steps() {
         homePage.clickOnCartButton();
-        //productPage.clickOnViewCartButtonProducts2();
-      //  productPage.clickOnViewCartButtonProducts2a();
     }
 
     @Step
     public void setQtyInCartPage1(String qtyFomCartPage){
-        cartPage.setQtyInCartPage1(qtyFomCartPage);
+        cartPage.setQtyInCartPage1(qtyFomCartPage);}
+    @Step
+    public void setQtyInCartPage2(String qtyFomCartPage){
         cartPage.setQtyInCartPage2(qtyFomCartPage);
+    }
+    @Step
+    public void UpdateCartStep(){
+        cartPage.clickUpdateCartButton();
     }
 
     @Step
@@ -142,7 +153,7 @@ public void checkSuccessMessageSteps(String productName1) {
 
 @Step
     public void checkIfCheckoutIsAvailableWithCartEmpty(){
-    String expected = "Checkout is not available whilst your cart is empty.";
+    String expected = "Your cart is currently empty.";
     String actual =cartPage.getErrorCheckoutEmptyCart();
     Assert.assertEquals(expected,actual);
 }
