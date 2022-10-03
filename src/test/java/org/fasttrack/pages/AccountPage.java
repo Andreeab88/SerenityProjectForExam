@@ -61,7 +61,7 @@ public class AccountPage extends BasePage{
     private WebElementFacade errorWrongUsernameLogin;
     @FindBy(css = ".woocommerce-error li")
     private WebElementFacade errorWrongPassLogin;
-    @FindBy(css = ".woocommerce-error li strong")
+    @FindBy(css = ".woocommerce-error li")
     private WebElementFacade errorNoCredentials;
 
 

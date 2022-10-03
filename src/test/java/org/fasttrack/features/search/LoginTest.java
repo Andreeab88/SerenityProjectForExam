@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
     public void loginUsingBadEmailFormatTest() {
         loginSteps.navigateToHomepage();
         loginSteps.loginUsingBadEmailFormatSteps();
-        loginSteps.checkErrorTextUsingWrongEmail();
+        loginSteps.checkErrorTextUsingWrongEmailFormat();
     }
 
     @Test

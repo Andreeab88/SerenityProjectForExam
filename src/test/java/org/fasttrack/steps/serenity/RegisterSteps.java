@@ -24,12 +24,19 @@ public class RegisterSteps extends BaseSteps {
     }
 
     @Step
-    public void navigateToAccountPageForRegister() {
-        accountPage.setEmailRegisterField(USER_EMAIL);
-        accountPage.setPassRegisterField(USER_PASS);
+    public void navigateToAccountPageForRegister(String email, String pass) {
+        accountPage.setEmailRegisterField(email);
+        accountPage.setPassRegisterField(pass);
         accountPage.clickRegisterButton();
     }
-
+    @Step
+    public void getSuccesRegisterMessageForFirstTimeStep() {
+        String expected = "Hello andreeaboboc (not andreeaboboc? Log out)\n" +
+                "\n" +
+                "From your account dashboard you can view your recent orders, manage your shipping and billing addresses and edit your password and account details.";
+        String actual = accountPage.getErrorRegistertText();
+        Assert.assertEquals(expected, actual);
+    }
 
 
     @Step

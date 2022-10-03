@@ -47,8 +47,8 @@ public class LoginSteps extends BaseSteps{
         accountPage.clickRememberMeButton();
         accountPage.clickLoginButton();}
     @Step
-    public void checkErrorTextUsingWrongEmail(){
-        String expected = "ERROR: Invalid email address. Lost your password?";
+    public void checkErrorTextUsingWrongEmailFormat(){
+        String expected = "ERROR: Invalid username. Lost your password?";
         String actual = accountPage.checkErrorTextWrongUsername();
         System.out.println(expected);
         System.out.println(actual);
@@ -73,6 +73,14 @@ public class LoginSteps extends BaseSteps{
         accountPage.clickRememberMeButton();
         accountPage.clickLoginButton();
     }
+    @Step
+    public void checkErrorTextUsingWrongEmail(){
+        String expected = "ERROR: Invalid email address. Lost your password?";
+        String actual = accountPage.checkErrorTextWrongUsername();
+        System.out.println(expected);
+        System.out.println(actual);
+        Assert.assertEquals(expected,actual);
+    }
 
     @Step
     public void loginUsingWrongPassword(String email, String password){
@@ -93,13 +101,16 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void loginUsingNoCredentials(){
-        homePage.open();
+        homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("");
-        accountPage.setPassField("");}
+        accountPage.setPassField("");
+        accountPage.clickRememberMeButton();
+        accountPage.clickLoginButton();
+    }
     @Step
     public void verifyTextErrorLoginWithoutCredentials(){
-        String expected = "ERROR: The password you entered for the email address andreea1988iusti2015@gmail.com is incorrect. Lost your password?";
+        String expected = "Error: Username is required.";
         String actual = accountPage.checkErrorTextLoginWithoutCredentials();
         Assert.assertEquals(expected,actual);
     }
