@@ -39,7 +39,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step
-    public void loginUsingBadEmailFormatSteps(){
+    public void loginUsingBadEmailFormatSteps(String email, String pass){
         homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("andreea1988iusti2015&gmail.com");
@@ -56,7 +56,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step
-    public void verifySuccesLoginWithLowerCaseEmailInserted(){
+    public void successfulLoginUsingEmailWithCapitalLetters(String email, String pass){
         homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("ANDREEA1988IUSTI2015@GMAIL.COM");
@@ -65,7 +65,7 @@ public class LoginSteps extends BaseSteps{
         accountPage.clickLoginButton();
     }
     @Step
-    public void loginUsingWrongEmailInserted(){
+    public void loginUsingWrongEmailInserted(String email, String pass){
         homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("iusti2015andreea1988@gmail.com");
@@ -100,7 +100,7 @@ public class LoginSteps extends BaseSteps{
 
 
     @Step
-    public void loginUsingNoCredentials(){
+    public void loginWhitoutCredentials(String email, String password){
         homePage.clickOnHomeButton();
         homePage.clickOnMyAccountButton();
         accountPage.setEmailField("");

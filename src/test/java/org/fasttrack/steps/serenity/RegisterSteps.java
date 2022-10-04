@@ -40,7 +40,7 @@ public class RegisterSteps extends BaseSteps {
 
 
     @Step
-    public void getErrorRegisterMessageStep() {
+    public void getErrorAlreadyRegisterMessageStep() {
         String expected = "Error: An account is already registered with your email address. Please log in.";
         String actual = accountPage.getErrorRegistertText();
         Assert.assertEquals(expected, actual);

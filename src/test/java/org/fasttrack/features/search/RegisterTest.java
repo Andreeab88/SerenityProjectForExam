@@ -9,7 +9,7 @@ public class RegisterTest extends BaseTest{
         registerSteps.verifyTitleSite();
         registerSteps.navigateToHomePage();
         registerSteps.navigateToAccountPageForRegister("andreeaboboc@yahoo.com", "123456andreea123456");
-        registerSteps.getErrorRegisterMessageStep();
+        registerSteps.getErrorAlreadyRegisterMessageStep();
     }
 
     @Test
@@ -17,6 +17,6 @@ public class RegisterTest extends BaseTest{
         registerSteps.verifyTitleSite();
 registerSteps.navigateToHomePage();
 registerSteps.navigateToAccountPageForRegister("andreea1988iusti2015@gmail.com", "123456andreea123456");
-registerSteps.getErrorRegisterMessageStep();
+registerSteps.getErrorAlreadyRegisterMessageStep();
     }
 }
