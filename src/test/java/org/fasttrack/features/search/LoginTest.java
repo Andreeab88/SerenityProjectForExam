@@ -8,6 +8,12 @@ import static org.fasttrack.utils.Constants.USER_PASS;
 public class LoginTest extends BaseTest {
 
     @Test
+    public void verifyMyAccountPageTitleTest() {
+        accountSteps.verifyTextAccountPage();
+        accountSteps.checkTitleTextFromMyAccountPage();
+    }
+
+    @Test
     public void checkLoginWithValidCredentialsTest() {
         homeSteps.verifyNameSite("FASTTRACKIT");
         registerSteps.navigateToHomePage();
